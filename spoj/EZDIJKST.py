@@ -4,8 +4,7 @@ from heapq import heappop,heapify
 #functions
 
 def dijkstra(graph,nNodes,start,target):
-    nodeList = [[100000,0,False,-1] for i in range(0,nNodes)] #(dist,id,visited,prev)
-    nodeList[start][2] = True
+    nodeList = [[100000,0,-1] for i in range(0,nNodes)] #(dist,id,prev)
     nodeList[start][0] = 0
     nodes = [] #this one wont be "heapified"
     for i in range(0,len(nodeList)):
@@ -32,10 +31,12 @@ def dijkstra(graph,nNodes,start,target):
                 #print nNode
                 if altDist < nNode[0]: #relax
                     nNode[0] = altDist
-                    nNode[2] = True
-                    nNode[3] = currentId
+                    nNode[2] = currentId
             
             heapify(nodeList)
+
+        if currentId == target:
+            break
 
     return targetNode[0]
 
