@@ -1,4 +1,4 @@
-#!/ust/bin/python
+#!/usr/bin/python
 import sys,string
 
 input = open(sys.argv[1])
